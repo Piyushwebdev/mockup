@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Mockup</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer",
+                {
+                    axis: 'y',
+                    data: [
+                        {
+                            type: "stackedBar",
+                            dataPoints: [
+                                { x: new Date(2012, 1, 1), y: 71 },
+                                { x: new Date(2012, 2, 1), y: 55 },
+                                { x: new Date(2012, 3, 1), y: 50 },
+                                { x: new Date(2012, 4, 1), y: 65 },
+                                { x: new Date(2012, 5, 1), y: 95 }
+
+                            ]
+                        },
+                        {
+                            type: "stackedBar",
+                            dataPoints: [
+                                { x: new Date(2012, 1, 1), y: 71 },
+                                { x: new Date(2012, 2, 1), y: 55 },
+                                { x: new Date(2012, 3, 1), y: 50 },
+                                { x: new Date(2012, 4, 1), y: 65 },
+                                { x: new Date(2012, 5, 1), y: 95 }
+
+                            ]
+                        },
+                        {
+                            type: "stackedBar",
+                            dataPoints: [
+                                { x: new Date(2012, 1, 1), y: 71 },
+                                { x: new Date(2012, 2, 1), y: 55 },
+                                { x: new Date(2012, 3, 1), y: 50 },
+                                { x: new Date(2012, 4, 1), y: 65 },
+                                { x: new Date(2012, 5, 1), y: 95 }
+
+                            ]
+                        },
+                    ]
+                });
+
+            chart.render();
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                axisX: {
+                    interval: 1,
+                    intervalType: "year"
+                },
+                axisY: {
+                    valueFormatString: "$#0bn",
+                    gridColor: "#B6B1A8",
+                    tickColor: "#B6B1A8"
+                },
+                toolTip: {
+                    shared: true,
+                    content: toolTipContent
+                },
+                data: [{
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    color: "#0800A3",
+                    name: "Q1",
+                    dataPoints: [
+                        { y: 6.75, x: new Date(2010, 0) },
+                        { y: 8.57, x: new Date(2011, 0) },
+                        { y: 10.64, x: new Date(2012, 0) },
+                        { y: 13.97, x: new Date(2013, 0) },
+                        { y: 15.42, x: new Date(2014, 0) },
+                        { y: 17.26, x: new Date(2015, 0) },
+                        { y: 20.26, x: new Date(2016, 0) }
+                    ]
+                },
+                {
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    name: "Q2",
+                    color: "#4935FF",
+                    dataPoints: [
+                        { y: 6.82, x: new Date(2010, 0) },
+                        { y: 9.02, x: new Date(2011, 0) },
+                        { y: 11.80, x: new Date(2012, 0) },
+                        { y: 14.11, x: new Date(2013, 0) },
+                        { y: 15.96, x: new Date(2014, 0) },
+                        { y: 17.73, x: new Date(2015, 0) },
+                        { y: 21.5, x: new Date(2016, 0) }
+                    ]
+                },
+                {
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    name: "Q3",
+                    color: "#85AFFF",
+                    dataPoints: [
+                        { y: 7.28, x: new Date(2010, 0) },
+                        { y: 9.72, x: new Date(2011, 0) },
+                        { y: 13.30, x: new Date(2012, 0) },
+                        { y: 14.9, x: new Date(2013, 0) },
+                        { y: 18.10, x: new Date(2014, 0) },
+                        { y: 18.68, x: new Date(2015, 0) },
+                        { y: 22.45, x: new Date(2016, 0) }
+                    ]
+                },
+                ]
+            });
+            chart.render();
+
+            function toolTipContent(e) {
+                var str = "";
+                var total = 0;
+                var str2, str3;
+                for (var i = 0; i < e.entries.length; i++) {
+                    var str1 = "<span style= \"color:" + e.entries[i].dataSeries.color + "\"> " + e.entries[i].dataSeries.name + "</span>: $<strong>" + e.entries[i].dataPoint.y + "</strong>bn<br/>";
+                    total = e.entries[i].dataPoint.y + total;
+                    str = str.concat(str1);
+                }
+                str2 = "<span style = \"color:DodgerBlue;\"><strong>" + (e.entries[0].dataPoint.x).getFullYear() + "</strong></span><br/>";
+                total = Math.round(total * 100) / 100;
+                str3 = "<span style = \"color:Tomato\">Total:</span><strong> $" + total + "</strong>bn<br/>";
+                return (str2.concat(str)).concat(str3);
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="appdiv">
+        <div class="belldiv">
+            <img class="bellimg" src="image/bell.png">
+        </div>
+        <div class="navdiv">
+            <div class="navdivtop">
+                <img class="iconimg" src="image/icon.svg">
+                <img class="searchimg" src="image/search-interface-symbol.png">
+            </div>
+            <div class="navdivmiddle">
+                <img class="homeimg" src="image/home.png">
+                <img class="fileimg" src="image/gif-file.png">
+                <img class="newspaperimg" src="image/newspaper.png">
+                <img class="userimg" src="image/user.png">
+            </div>
+            <div class="navdivbottom">
+                <img class="bellimg" src="image/bell.png">
+                <img class="returnimg" src="image/return.png">
+            </div>
+        </div>
+        <div class="profilediv">
+            <div class="profiletop">
+                <div class="profileimgdiv">
+                    <img class="profileimg" src="image/piyush.jpg">
+                </div>
+                <div class="profiledec">
+                    <h2>Hi Piyush,</h2>
+                    <p>welcome back</p>
+                </div>
+            </div>
+            <div class="profilemiddle">
+                <h4>Today</h4>
+                <h2>$56,890</h2>
+                <p>Account Balance</p>
+                <h3>$4,000</h3>
+                <p>Year-to-Date Contributions</p>
+                <h3>$1,892</h3>
+                <p>Total Interest</p>
+                <button class="wantbtn">I want to<i class="fa fa-angle-down"></i></button>
+            </div>
+            <div class="profilebottom">
+                <h3>Recent Transaction</h3>
+                <p>22/07/2022</p>
+                <h4>Withdrawal transfer to bank XX4567</h4>
+                <hr />
+                <p>7/02/2022</p>
+                <h4>Withdrawal transfer to bank XX6660</h4>
+                <hr />
+                <p>16/09/2021</p>
+                <h4>Withdrawal transfer to bank XX5644</h4>
+                <hr />
+            </div>
+        </div>
+        <div class="middlediv">
+            <div class="retirementdiv">
+                <h5 style="color: rgb(51, 51, 205);margin-bottom: 0.25rem;">Retirement Income</h5>
+                <h3>Starting year 2056</h3>
+                <div class="retirementboxdiv">
+                    <div class="retirementbox">
+                        <h2>$300,000</h2>
+                        <p>My Goal</p>
+                        <hr>
+                    </div>
+                    <div class="retirementboxright" style="display: flex;">
+                        <div class="retirementbox">
+                            <h2>59%</h2>
+                            <p>Goals Achieved</p>
+                            <hr>
+                        </div>
+                        <div class="retirementbox">
+                            <h2>$300</h2>
+                            <p>Est. Monthly Income</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contributiondiv">
+                <p style="font-weight: 800;font-size: 1.1rem;">Contributions Overtime</p>
+                <!-- <div id="chartContainer" style="height: 300px; width: 100%;">
+                </div> -->
+                <div id="chartContainer" style="height: 280px; width: 100%;margin-block: 1rem;"></div>
+            </div>
+            <div class="peersdiv">
+                <p style="font-weight: 800;font-size: 1.1rem;">How do I compare to my peers?</p>
+                <p style="font-size: 0.75rem;margin-top: 5px;">These numbers represent current goal achievement</p>
+                <div class="progressbox">
+                    <div class="progreesdesc">
+                        <div style="display: flex;">
+                            <strong style="font-size: 0.8rem;">Age: </strong><span
+                                style="font-size: 0.8rem;">30</span><i style="font-size: 0.8rem;"
+                                class="fa fa-angle-down"></i>
+                        </div>
+                        <hr />
+                        <div style="display: flex;">
+                            <strong style="font-size: 0.8rem;">Salary: </strong><span
+                                style="font-size: 0.8rem;">K20-K30</span><i style="font-size: 0.8rem;"
+                                class="fa fa-angle-down"></i>
+                        </div>
+                        <hr />
+                        <div style="display: flex;">
+                            <strong style="font-size: 0.8rem;">Gender: </strong><span
+                                style="font-size: 0.8rem;">Male</span><i style="font-size: 0.8rem;"
+                                class="fa fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div class="progressdiv">
+                        <div class="progress-bar1" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                        <div class="progress-bar2" role="progressbar" aria-valuenow="9" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                        <div class="progress-bar3" role="progressbar" aria-valuenow="43" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightdiv">
+            <div class="rightretirementdiv">
+                <h3>Retirement Strategy</h3>
+                <h5>Employee Contributions</h5>
+                <div style="display: flex;gap:0.5rem;justify-content: space-between;"><progress value="30" max="100">30
+                        %</progress>
+                    <p style="font-size: 0.7rem;font-weight: 600;">30%</p>
+                </div>
+
+                <h5>Retirement Age</h5>
+                <div style="display: flex;gap:0.5rem;justify-content: space-between;"><progress value="70" max="100">70
+                        %</progress>
+                    <p style="font-size: 0.7rem;font-weight: 600;">70%</p>
+                </div>
+
+                <hr />
+                <div style="display: flex;gap:0.5rem;justify-content: space-between;">
+                    <p style="font-size: 0.7rem;font-weight: 600;">Employer Contributions</p>
+                    <p style="font-size: 0.7rem;font-weight: 600;">8.4%</p>
+                </div>
+                <div style="display: flex;gap:0.5rem;justify-content: space-between;margin-top: 1rem;">
+                    <p style="font-size: 0.7rem;font-weight: 600;">Interest Rates</p>
+                    <p style="font-size: 0.7rem;font-weight: 600;">5%</p>
+                </div>
+                <div class="updatebuttondiv">
+                    <button class="updatebtn">Update</button>
+                </div>
+                <p class="view">View help desk?</p>
+            </div>
+            <div class="rightbottomdiv">
+                <p style="font-size: 0.95rem;font-weight: 500;">Are you considering a</p>
+                <strong style="font-size: 0.95rem;">Housing advance?</strong>
+                <p style="margin-block: 0.5rem;font-size: 0.7rem;">Limited time reduced interest</p>
+                <p style="color:rgb(51, 51, 205);font-size: 0.85rem;font-weight: 600;">Learn more...</p>
+            </div>
+        </div>
+        <div class="mobilenav">
+            <img class="homeimg" src="image/home.png">
+            <img class="fileimg" src="image/gif-file.png">
+            <img class="newspaperimg" src="image/newspaper.png">
+            <img class="userimg" src="image/user.png">
+            <img class="searchimg" src="image/search-interface-symbol.png">
+        </div>
+    </div>
+
+</body>
+
+</html>
